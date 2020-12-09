@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/store"
+        android:id="@+id/store_nav"
+        />
+    <item android:title="@string/get"
+        android:id="@+id/get_nav"
+        />
+    <item android:title="@string/check"
+        android:id="@+id/check_nav"
+        />
+<!--    <item android:title="@string/"-->
+<!--        android:id="@+id/"-->
+<!--        android:icon="@drawable/"-->
+<!--        />-->
+
+</menu>

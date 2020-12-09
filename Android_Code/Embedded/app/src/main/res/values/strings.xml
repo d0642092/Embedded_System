@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Embedded</string>
+    <string name="store">進貨</string>
+    <string name="get">取貨</string>
+    <string name="check">檢視</string>
+    <string name="name">產品名稱</string>
+    <string name="content">數量</string>
+</resources>
