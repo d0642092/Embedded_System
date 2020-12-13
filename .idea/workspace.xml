@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87ef9548-c767-400f-90aa-0489917347b7" name="Default Changelist" comment="" />
+    <list default="true" id="87ef9548-c767-400f-90aa-0489917347b7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/java/com/example/embedded/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/java/com/example/embedded/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/java/com/example/embedded/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/java/com/example/embedded/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/java/com/example/embedded/productListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/java/com/example/embedded/productListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/res/layout/list_style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/res/layout/list_style.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Arduino_Code/nodeMCU/nodeMCU.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Arduino_Code/nodeMCU/nodeMCU.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python/Socket.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python/Socket.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +28,78 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Android_Code/Embedded" />
+  </component>
+  <component name="RunManager" selected="Python.socketServer">
+    <configuration name="Socket" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Embedded_System" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\zxc12\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python/Socket.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Embedded_System" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\zxc12\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="socketServer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Embedded_System" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\zxc12\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python/socketServer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.socketServer" />
+        <item itemvalue="Python.Socket" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -32,5 +113,52 @@
       <updated>1607523472770</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="137" y="16" width="1092" height="712" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607602923970">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="16" width="1092" height="712" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1607602923970" />
+    <state width="659" height="182" key="GridCell.Tab.0.bottom" timestamp="1607845906883">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="659" height="182" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607845906883" />
+    <state width="659" height="182" key="GridCell.Tab.0.center" timestamp="1607845906883">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="659" height="182" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607845906883" />
+    <state width="659" height="182" key="GridCell.Tab.0.left" timestamp="1607845906883">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="659" height="182" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607845906883" />
+    <state width="659" height="182" key="GridCell.Tab.0.right" timestamp="1607845906883">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="659" height="182" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607845906883" />
+    <state x="820" y="78" key="RollbackChangesDialog" timestamp="1607792151986">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="820" y="78" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607792151986" />
+    <state x="370" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1607842166262">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="370" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1607842166262" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607619657188">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1607619657188" />
   </component>
 </project>

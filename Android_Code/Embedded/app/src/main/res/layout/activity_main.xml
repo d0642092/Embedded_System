@@ -11,14 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/search_product"/>
+
     <ListView
+        android:id="@+id/product_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/product_item">
+        android:layout_height="533dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
 
     </ListView>
 
+    <Button
+        android:id="@+id/increase_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_btn" />
 
 
     <!--無用-->

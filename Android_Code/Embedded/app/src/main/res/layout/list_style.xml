@@ -4,14 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants">
 
     <ImageView
         android:id="@+id/product_image"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_weight="2"
-        app:srcCompat="@mipmap/img_test" />
+        app:srcCompat="@mipmap/img_test"
+        android:focusable="false"/>
 
     <LinearLayout
         android:layout_width="200dp"
@@ -52,13 +54,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="@string/get" />
+                android:text="@string/get"
+                android:focusable="false"/>
             <Button
                 android:id="@+id/store_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/store"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:focusable="false"/>
         </LinearLayout>
 
     </LinearLayout>

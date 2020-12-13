@@ -12,7 +12,7 @@ String serverIP = "192.168.43.214";
 int port = 55688;
 WiFiClient client;
 
-
+boolean flag = true;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -27,6 +27,10 @@ void setup() {
 
 void loop() {
   if(client.connected()){
+    if(flag){
+      client.stop();
+      flag = false;
+    }
     if(client.available()){
       timeout = client.parseInt();
       Serial.print(timeout);

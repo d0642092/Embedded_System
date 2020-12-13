@@ -2,8 +2,8 @@ import _thread
 import socket
 import threading
 
-# HOSTip = '192.168.8.104'
-HOSTip = '192.168.43.214'
+HOSTip = '192.168.8.104'
+# HOSTip = '192.168.43.214'
 PORTnum = 55688
 ClientMaxNum = 2
 
@@ -15,15 +15,12 @@ def client_handler_arduino(connection):
         print('Client:{}'.format(clientMessage))
 def client_handler_phone(connection:socket):
     # connection.send('I\'m Ranyu\'s Raspberrypi\n'.encode('utf-8'))
-    connection.send('Ran'.encode("utf-8"))
-    clientMessage = str(connection.recv(1024), encoding='utf-8')
-    if clientMessage == "OK":
-        while True:
-            a = input("Input number: ")
-            if a=="0" or a=="1":
-                connection.send(a.encode("utf-8"))
-                clientMessage = str(connection.recv(1024), encoding='utf-8')
-                print('Client:{}'.format(clientMessage))
+    connection.send('Ran\n'.encode("utf-8"))
+    # clientMessage = str(connection.recv(1024), encoding='utf-8')
+    # if clientMessage == "OK":
+    while True:
+        clientMessage = str(connection.recv(1024), encoding='utf-8')
+        print('Client:{}'.format(clientMessage))
 
 
 class rasp_server(threading.Thread):
@@ -46,7 +43,7 @@ class rasp_server(threading.Thread):
             # 開啟兩端溝通Thread
             clientIdentify = str(Client.recv(1024), encoding="utf-8")
 
-            if clientIdentify == "I'm NodeMCU":
+            if clientIdentify == "phone":
                 print(clientIdentify)
                 threading.Thread(target=client_handler_phone, args=(Client,)).start()
             self.clientThreadCount += 1

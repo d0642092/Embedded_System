@@ -34,6 +34,7 @@ public class productListAdapter extends ArrayAdapter<Product> {
 // 獲取ImageView和TextView
         TextView product_name = (TextView) oneItemView.findViewById(R.id.product_name);
         TextView product_content = (TextView) oneItemView.findViewById(R.id.produvt_content);
+
         ImageView product_image = (ImageView) oneItemView.findViewById(R.id.product_image);
         Button store_BTN = (Button)oneItemView.findViewById(R.id.store_product);
         store_BTN.setOnClickListener(new View.OnClickListener(){
@@ -42,7 +43,7 @@ public class productListAdapter extends ArrayAdapter<Product> {
                 assert item != null;
                 alertDialog.setTitle("進貨!");
                 alertDialog.setMessage("將"+item.getProduct_name()+"放倉庫?");
-                AlertDialog(alertDialog,"store",item.getProduct_name());
+                AlertDialog(alertDialog,"store",item);
             }
         });
         Button get_BTN = (Button)oneItemView.findViewById(R.id.get_product);
@@ -52,31 +53,28 @@ public class productListAdapter extends ArrayAdapter<Product> {
                 assert item != null;
                 alertDialog.setTitle("出貨!");
                 alertDialog.setMessage("將"+item.getProduct_name()+"取出?");
-                AlertDialog(alertDialog,"get",item.getProduct_name());
+                AlertDialog(alertDialog,"get",item);
             }
         });
 
         assert item != null;
         product_name.setText(item.getProduct_name());
-        product_content.setText(item.getProduct_content());
+        product_content.setText("數量" + item.getProduct_content());
         return oneItemView;
     }
 
-    public void AlertDialog(AlertDialog.Builder alertDialog, final String action, final String item_name){
+    public void AlertDialog(AlertDialog.Builder alertDialog, final String action, final Product product){
         alertDialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                System.out.println("yes");
+                MainActivity.item = product;
+                MainActivity.item_name = product.getProduct_name();
                 MainActivity.action = action;
-                MainActivity.item_name = item_name;
-                System.out.println(MainActivity.action);
-                System.out.println(MainActivity.item_name);
             }
         });
         alertDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                System.out.println("cancel");
                 dialog.dismiss();
             }
         });
