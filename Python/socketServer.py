@@ -51,7 +51,7 @@ def car(sc,num):
 
 
 if __name__ == "__main__":
-    host = "192.168.43.214"
+    host = "192.168.0.197"
     port = 55688
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
