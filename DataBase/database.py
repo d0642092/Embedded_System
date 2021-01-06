@@ -4,6 +4,18 @@ TableName = 'Storage'
 # 格子編號, 物品種類, 內容數量, 圖片路徑
 FieldName = ['s_Id', 'category', 'quantity', 'photoPath']
 
+# class dbmanager(sqlite3):
+#     def __init__(self):
+#         pass
+#     # def __enter__(self):
+#     #     pass
+#     # def __exit__(self, exc_type, exc_val, exc_tb):
+#     #     pass
+#     # def createCursor(self):
+#     #     conn = sqlite3.connect('test.db')
+
+def createCursor():
+    conn = sqlite3.connect('test.db')
 
 def createTable(c):
     # 格子編號, 物品種類, 內容數量, 圖片路徑
@@ -19,8 +31,13 @@ def deleteTable(c):
     c.execute('''DROP TABLE {}'''.format(TableName))
     print("Table deleted successfully")
 
+def deleteRow(self, c, ID):
+    c.execute('''DELETE FROM {} WHERE 
+                {} :=ID;
+                '''.format(TableName, FieldName[0]), {"ID": ID})
 
-def insert(c, ID, category, quantity, photoPath):
+
+def insert(c, ID, category=None, quantity=None, photoPath=None):
     params = (ID, category, quantity, photoPath)
     c.execute("INSERT INTO {} VALUES (?, ?, ?, ?)".format(TableName), params)
 
@@ -28,11 +45,11 @@ def insert(c, ID, category, quantity, photoPath):
 def select(c):
     cursor = c.execute("SELECT * FROM {}".format(TableName))
     # cur.execute("select * from people where name_last=:who and age=:age", {"who": who, "age": age})
-    for row in cursor:
-        print(row)
+    # for row in cursor:
+    #     print(row)
+    print(cursor.fetchall())
 
-
-def update(c, ID, category, quantity, photoPath):
+def update(c, ID, category=None, quantity=None, photoPath=None):
     if category != None:
         c.execute("UPDATE {} SET category=:category WHERE s_ID=:ID".format(TableName), {"category": category, "ID": ID})
     if quantity != None:
@@ -40,18 +57,24 @@ def update(c, ID, category, quantity, photoPath):
     if photoPath != None:
         c.execute("UPDATE {} SET photoPath=:photoPath WHERE s_ID=:ID".format(TableName), {"photoPath": photoPath, "ID": ID})
 
+def initDB(c, number):
+    for i in range(number):
+        insert(c, ID=i+1)
+
 
 if __name__ == '__main__':
-    # 建立新的DB, 如果沒有會新增
-    # with sqlite3.connect(':memory:') as conn: ..>寫在RAM
+    建立新的DB, 如果沒有會新增
     with sqlite3.connect('test.db') as conn:
         print("Open database successfully")
         c = conn.cursor()
 
-        # deleteTable(c)
+        deleteTable(c)
         createTable(c)
-        # insert(c, ID=2, category='redbox', quantity=1, photoPath='dataFromRasp')
+        initDB(c, 9)
+        insert(c, ID=2, category='redbox', quantity=1, photoPath='dataFromRasp')
         update(c, ID=2, category='bluebox', quantity=2, photoPath='dataFromRaspRRR')
         select(c)
 
         conn.commit()
+    with dbmanager.connect('test.db', ) as conn:
+        pass
