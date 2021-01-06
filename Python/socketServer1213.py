@@ -33,7 +33,9 @@ def phone(sp,num):
                 reply = "OK\n"
                 sp.sendall(reply.encode())
                 print(request)
-                data = cur.execute("select s_id,quantity from Storage where category =:name",{"name":lineSplit[1]})
+                cursor = cur.execute("select s_id,quantity from Storage where category =:name",{"name":lineSplit[1]})
+                data = cursor.fetchall()
+                print(data)
                 if lineSplit[0] == "get":
                     database.update(c = cur, ID = data[0][0],quantity = data[0][1] - 1)
                 elif lineSplit[0] == "store":
@@ -79,7 +81,7 @@ def car(sc,num):
 
 
 if __name__ == "__main__":
-    host = "192.168.0.108"
+    host = "192.168.0.199"
     port = 55688
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
