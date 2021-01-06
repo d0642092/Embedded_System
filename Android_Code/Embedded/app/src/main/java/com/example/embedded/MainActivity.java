@@ -3,10 +3,14 @@ package com.example.embedded;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 //socket
 
@@ -39,9 +44,16 @@ import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    static boolean change = false;
+    //thread 判斷
     static String action="", item_name="";
     static Product item;
+    static Socket socket;
+    static DataOutputStream out;
+    static BufferedReader br;
+    static boolean flag = true;
+    //create item
+    static String image_name=null;
+
     private ListView product_list;
     private List<String> allItemName = new ArrayList<>(); //防止產品名重複
     private static List<Product> products = new ArrayList<>();
@@ -52,13 +64,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
     private EditText editText;
     private Button check, cancel;
-    final static String serverIP = "192.168.50.1";
+    final static String serverIP = "192.168.0.197";
     final static int port = 55688;
     boolean del = false;
-    static Socket socket;
-    static DataOutputStream out;
-    static BufferedReader br;
-    static boolean flag = true;
+
+    static TakePhoto photo = new TakePhoto();
     Thread t;
     Handler handler = new Handler();
     @Override
@@ -169,6 +179,9 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener increateProductListen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if(!photo.hasPermission(getApplicationContext())){
+                if(photo.needCheckPermission(MainActivity.this)){ }
+            }
             dialoginit();
             dialog.show();
             check.setOnClickListener(new View.OnClickListener() {
@@ -182,14 +195,17 @@ public class MainActivity extends AppCompatActivity {
                         AlertDialog(alertDialog);
                     }
                     else{
-                        searchView.setQuery("",false);
-                        Product product = new Product("A",tmp_name,0);
-                        allItemName.add(tmp_name);
-                        products.add(product);
-                        changeList(products);
-                        MainActivity.action = "add";
-                        MainActivity.item = product;
-                        dialog.dismiss();
+                        if(image_name!=null){
+                            searchView.setQuery("",false);
+                            Product product = new Product(image_name, tmp_name,0);
+                            allItemName.add(tmp_name);
+                            products.add(product);
+                            changeList(products);
+                            MainActivity.action = "add";
+                            MainActivity.item = product;
+                            image_name = null;
+                            dialog.dismiss();
+                        }
                     }
                 }
             });
@@ -203,10 +219,41 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //拍照
+                    Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent,0);
                 }
             });
         }
     };
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            if(requestCode == 0) {
+                if (!editText.getText().toString().isEmpty()) {
+                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                    image_name = editText.getText().toString();
+                    String path = photo.save(bitmap, editText.getText().toString());
+                    System.out.println("\n" + path + "\n");
+                    imageView.setBackground(null);
+                    imageView.setImageBitmap(bitmap);
+//                    imageView.setImageBitmap(photo.getPhoto(path));
+
+                } else {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                    alertDialog.setTitle("無產品名稱");
+                    alertDialog.setMessage("請先輸入產品名稱");
+                    AlertDialog(alertDialog);
+                }
+
+            }
+            return;
+        }
+    }
+
     public void dialoginit(){
         dialog = new Dialog(this);
         dialog.setTitle("新增物品");
@@ -236,9 +283,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Runnable runnable = new Runnable(){
-//        Socket socket;
-//        DataOutputStream out;
-//        BufferedReader br;
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         public void run() {

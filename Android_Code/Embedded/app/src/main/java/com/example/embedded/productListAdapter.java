@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,19 @@ public class productListAdapter extends ArrayAdapter<Product> {
         TextView product_content = (TextView) oneItemView.findViewById(R.id.produvt_content);
 
         ImageView product_image = (ImageView) oneItemView.findViewById(R.id.product_image);
+        if (item.getProduct_image() != null) {
+            product_image.setBackground(null);
+            Bitmap bitmap = MainActivity.photo.getPhoto(item.getProduct_image()+".jpg");
+            if(bitmap != null){
+                product_image.setImageBitmap(bitmap);
+            } else {
+                product_image.setImageResource(R.mipmap.img_test);
+            }
+
+        }
+        else {
+            product_image.setImageResource(R.mipmap.img_test);
+        }
         Button store_BTN = (Button)oneItemView.findViewById(R.id.store_product);
         store_BTN.setOnClickListener(new View.OnClickListener(){
             @Override
