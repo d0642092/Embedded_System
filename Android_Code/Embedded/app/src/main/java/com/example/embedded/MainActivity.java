@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
     private EditText editText;
     private Button check, cancel;
-    final static String serverIP = "192.168.0.197";
+    final static String serverIP = "192.168.0.199";
     final static int port = 55688;
     boolean del = false;
 
@@ -373,6 +373,7 @@ public class MainActivity extends AppCompatActivity {
                                 System.out.println(message);
                                 MainActivity.action = "";
                                 MainActivity.item = null;
+                                return_str = br.readLine();
                                 break;
                             case "del":
                                 message = "del/" + MainActivity.item.getProduct_name();
@@ -382,6 +383,7 @@ public class MainActivity extends AppCompatActivity {
                                 System.out.println(message);
                                 MainActivity.action = "";
                                 MainActivity.item = null;
+                                return_str = br.readLine();
                                 break;
                             case "init":
                                 message = "init App";
@@ -433,6 +435,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
 
         try {
+
             flag = false;
             handler.removeCallbacks(runnable);
             t.join();
@@ -445,5 +448,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         super.onDestroy();
+//        System.exit(0);
     }
 }
