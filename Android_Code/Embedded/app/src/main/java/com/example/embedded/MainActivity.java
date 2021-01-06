@@ -81,14 +81,14 @@ public class MainActivity extends AppCompatActivity {
         searchView = findViewById(R.id.search_product);
         searchView.setIconified(false);
 
-        products.add(new Product("A","KindA",1));
-        products.add(new Product("B","KindB",2));
-        products.add(new Product("C","KindC",3));
-        products.add(new Product("D","AJDLVL",4));
-        allItemName.add("KindA");
-        allItemName.add("KindB");
-        allItemName.add("KindC");
-        allItemName.add("AJDLVL");
+//        products.add(new Product("A","KindA",1));
+//        products.add(new Product("B","KindB",2));
+//        products.add(new Product("C","KindC",3));
+//        products.add(new Product("D","AJDLVL",4));
+//        allItemName.add("KindA");
+//        allItemName.add("KindB");
+//        allItemName.add("KindC");
+//        allItemName.add("AJDLVL");
 
         changeList(products);
 

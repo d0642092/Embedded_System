@@ -45,16 +45,19 @@ def phone(sp,num):
                 sp.sendall(reply.encode())
                 cursor = cur.execute("select s_id from Storage")
                 ids = cursor.fetchall()
+                print(ids)
                 for i in range(4):
                     if i not in ids:
                         id = i
+                        print(id)
+                        break
                 database.insert(cur,id,lineSplit[1],0,lineSplit[2])
             elif lineSplit[0] == "del":
                 reply = "OK\n"
                 sp.sendall(reply.encode())
                 cursor = cur.execute("select s_id from Storage where category =:name",{"name":lineSplit[1]})
                 ids = cursor.fetchall()
-                database.deleteRow(c = cur, ID = ids[0])
+                database.deleteRow(c = cur, ID = ids[0][0])
             database.select(cur)
         
         except socket.timeout:
