@@ -63,7 +63,6 @@ def initDB(c, number):
 
 
 if __name__ == '__main__':
-    建立新的DB, 如果沒有會新增
     with sqlite3.connect('test.db') as conn:
         print("Open database successfully")
         c = conn.cursor()

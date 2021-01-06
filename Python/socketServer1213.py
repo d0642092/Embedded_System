@@ -35,7 +35,6 @@ def phone(sp,num):
                 print(request)
                 cursor = cur.execute("select s_id,quantity from Storage where category =:name",{"name":lineSplit[1]})
                 data = cursor.fetchall()
-                print(data)
                 if lineSplit[0] == "get":
                     database.update(c = cur, ID = data[0][0],quantity = data[0][1] - 1)
                 elif lineSplit[0] == "store":
@@ -44,7 +43,8 @@ def phone(sp,num):
             elif lineSplit[0] == "add":
                 reply = "OK\n"
                 sp.sendall(reply.encode())
-                ids = cur.execute("select s_id from Storage")
+                cursor = cur.execute("select s_id from Storage")
+                ids = cursor.fetchall()
                 for i in range(4):
                     if i not in ids:
                         id = i
@@ -52,8 +52,10 @@ def phone(sp,num):
             elif lineSplit[0] == "del":
                 reply = "OK\n"
                 sp.sendall(reply.encode())
-                ids = cur.execute("select s_id from Storage where category =:name",{"name":lineSplit[1]})
+                cursor = cur.execute("select s_id from Storage where category =:name",{"name":lineSplit[1]})
+                ids = cursor.fetchall()
                 database.deleteRow(c = cur, ID = ids[0])
+            database.select(cur)
         
         except socket.timeout:
             pass
