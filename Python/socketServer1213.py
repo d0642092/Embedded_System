@@ -1,7 +1,9 @@
 import socket
 import time
 import threading
-from Embedded_System.DataBase import database
+import sys
+sys.path.append("../DataBase")
+import database
 import sqlite3
 
 msg = "non"
@@ -24,14 +26,26 @@ def phone(sp,num,cursor):
             elif lineSplit[0] == "get" or lineSplit[0] == "store":
                 reply = "OK\n"
                 sp.sendall(reply.encode())
-                while msg == "go":
-                    pass
-                msg = "go"
                 print(request)
-            elif lineSplit[0] == "get":
+                data = cursor.execute("select ID,quantity from * where category =:name",{"name":lineSplit[1]})
+                if lineSplit[0] == "get":
+                    database.update(c = cursor, ID = data[0][0],quantity = data[0][1] - 1)
+                elif lineSplit[0] == "store":
+                    database.update(c = cursor, ID = data[0][0],quantity = data[0][1] + 1)
+
+            elif lineSplit[0] == "add":
                 reply = "OK\n"
                 sp.sendall(reply.encode())
-                database.update(cur,)
+                ids = cursor.execute("select ID from *")
+                for i in range(4):
+                    if i not in ids:
+                        id = i
+                database.insert(cur,id,lineSplit[1],0,lineSplit[2])
+            elif lineSplit[0] == "del":
+                reply = "OK\n"
+                sp.sendall(reply.encode())
+                ids = cur.execute("select ID from * where category =:name",{"name":lineSplit[1]})
+                database.deleteRow(c = cursor, ID = ids[0])
         
         except socket.timeout:
             pass
@@ -59,13 +73,13 @@ def car(sc,num):
 
 
 if __name__ == "__main__":
-    host = "192.168.50.1"
+    host = "192.168.0.108"
     port = 55688
 
-    with sqlite3.connect("rasp.db") as db:
-        print("open database...")
-        cur = db.cursor()
-        database.createTable(c)
+    db = sqlite3.connect("rasp.db")
+    print("open database...")
+    cur = db.cursor()
+    database.createTable(cur)
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((host,port)) # 固定ip與port
@@ -107,6 +121,8 @@ if __name__ == "__main__":
             tdBreak[i] = False
             thread[i].join()
         s.close()
+        cur.close()
+        db.close()
         print("Server Close")
 
 

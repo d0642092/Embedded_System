@@ -63,19 +63,18 @@ def initDB(c, number):
 
 
 if __name__ == '__main__':
-    # 建立新的DB, 如果沒有會新增
-    # with sqlite3.connect(':memory:') as conn: ..>寫在RAM
-    # with sqlite3.connect('test.db') as conn:
-    #     print("Open database successfully")
-    #     c = conn.cursor()
+    建立新的DB, 如果沒有會新增
+    with sqlite3.connect('test.db') as conn:
+        print("Open database successfully")
+        c = conn.cursor()
 
-        # deleteTable(c)
-        # createTable(c)
-        # initDB(c, 9)
-        # insert(c, ID=2, category='redbox', quantity=1, photoPath='dataFromRasp')
-        # update(c, ID=2, category='bluebox', quantity=2, photoPath='dataFromRaspRRR')
-        # select(c)
+        deleteTable(c)
+        createTable(c)
+        initDB(c, 9)
+        insert(c, ID=2, category='redbox', quantity=1, photoPath='dataFromRasp')
+        update(c, ID=2, category='bluebox', quantity=2, photoPath='dataFromRaspRRR')
+        select(c)
 
-        # conn.commit()
-    # with dbmanager.connect('test.db', ) as conn:
-    #     pass
+        conn.commit()
+    with dbmanager.connect('test.db', ) as conn:
+        pass
