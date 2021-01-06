@@ -11,9 +11,15 @@ thread = []
 tdBreak = []
 num = 0
 
-def phone(sp,num,cursor):
+def phone(sp,num):
     global msg
     global tdBreak
+
+    db = sqlite3.connect("rasp.db")
+    print("open database...")
+    cur = db.cursor()
+    database.createTable(cur)
+
     while tdBreak[num]:
         try:
             request = sp.recv(1024).decode()
@@ -27,16 +33,16 @@ def phone(sp,num,cursor):
                 reply = "OK\n"
                 sp.sendall(reply.encode())
                 print(request)
-                data = cursor.execute("select ID,quantity from * where category =:name",{"name":lineSplit[1]})
+                data = cur.execute("select ID,quantity from * where category =:name",{"name":lineSplit[1]})
                 if lineSplit[0] == "get":
-                    database.update(c = cursor, ID = data[0][0],quantity = data[0][1] - 1)
+                    database.update(c = cur, ID = data[0][0],quantity = data[0][1] - 1)
                 elif lineSplit[0] == "store":
-                    database.update(c = cursor, ID = data[0][0],quantity = data[0][1] + 1)
+                    database.update(c = cur, ID = data[0][0],quantity = data[0][1] + 1)
 
             elif lineSplit[0] == "add":
                 reply = "OK\n"
                 sp.sendall(reply.encode())
-                ids = cursor.execute("select ID from *")
+                ids = cur.execute("select ID from *")
                 for i in range(4):
                     if i not in ids:
                         id = i
@@ -45,7 +51,7 @@ def phone(sp,num,cursor):
                 reply = "OK\n"
                 sp.sendall(reply.encode())
                 ids = cur.execute("select ID from * where category =:name",{"name":lineSplit[1]})
-                database.deleteRow(c = cursor, ID = ids[0])
+                database.deleteRow(c = cur, ID = ids[0])
         
         except socket.timeout:
             pass
@@ -76,11 +82,6 @@ if __name__ == "__main__":
     host = "192.168.0.108"
     port = 55688
 
-    db = sqlite3.connect("rasp.db")
-    print("open database...")
-    cur = db.cursor()
-    database.createTable(cur)
-
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((host,port)) # 固定ip與port
     s.listen(3) # 監聽最大數量
@@ -98,7 +99,7 @@ if __name__ == "__main__":
                 con.sendall(reply.encode())
                 if request.decode() == "phone":
                     con.settimeout(0.5)
-                    pt = threading.Thread(target = phone,args=[con,num,cur])
+                    pt = threading.Thread(target = phone,args=[con,num])
                     tdBreak.append(True) # 保留打斷每個thread的bealoon
                     thread.append(pt) # 儲存每個thread
                     num = num + 1 # 紀錄有幾個thread
