@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="87ef9548-c767-400f-90aa-0489917347b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/java/com/example/embedded/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Android_Code/Embedded/app/src/main/java/com/example/embedded/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataBase/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataBase/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python/socketServer1213.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python/socketServer1213.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +29,7 @@
       <recent name="D:\Code\Embedded_System\Python" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ServerTest">
+  <component name="RunManager" selected="Python.socketServer1213">
     <configuration name="ServerTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Embedded_System" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,8 +114,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="socketServer1213" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Embedded_System" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\zxc12\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python/socketServer1213.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.socketServer1213" />
         <item itemvalue="Python.ServerTest" />
         <item itemvalue="Python.socketServer" />
         <item itemvalue="Python.Socket" />
@@ -156,30 +179,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1608193627714" />
-    <state width="1345" height="184" key="GridCell.Tab.0.bottom" timestamp="1609914816478">
+    <state width="1345" height="196" key="GridCell.Tab.0.bottom" timestamp="1609918003650">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="184" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1609914816478" />
-    <state width="1345" height="184" key="GridCell.Tab.0.center" timestamp="1609914816477">
+    <state width="1345" height="196" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1609918003650" />
+    <state width="1345" height="196" key="GridCell.Tab.0.center" timestamp="1609918003649">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="184" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1609914816477" />
-    <state width="1345" height="184" key="GridCell.Tab.0.left" timestamp="1609914816477">
+    <state width="1345" height="196" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1609918003649" />
+    <state width="1345" height="196" key="GridCell.Tab.0.left" timestamp="1609918003649">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="184" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1609914816477" />
-    <state width="1345" height="184" key="GridCell.Tab.0.right" timestamp="1609914816478">
+    <state width="1345" height="196" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1609918003649" />
+    <state width="1345" height="196" key="GridCell.Tab.0.right" timestamp="1609918003650">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="184" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1609914816478" />
+    <state width="1345" height="196" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1609918003650" />
     <state x="820" y="78" key="RollbackChangesDialog" timestamp="1607792151986">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="820" y="78" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607792151986" />
-    <state x="370" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1608193601586">
+    <state x="370" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1609915514638">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="370" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1608193601586" />
+    <state x="370" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1609915514638" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607619657188">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

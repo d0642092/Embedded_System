@@ -33,8 +33,7 @@ def deleteTable(c):
 
 def deleteRow(c, ID):
     c.execute('''DELETE FROM {} WHERE 
-                {} :=ID;
-                '''.format(TableName, FieldName[0]), {"ID": ID})
+                {}=:ID;'''.format(TableName, FieldName[0]), {"ID": ID})
 
 
 def insert(c, ID, category=None, quantity=None, photoPath=None):
