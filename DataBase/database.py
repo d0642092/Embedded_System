@@ -31,7 +31,7 @@ def deleteTable(c):
     c.execute('''DROP TABLE {}'''.format(TableName))
     print("Table deleted successfully")
 
-def deleteRow(self, c, ID):
+def deleteRow(c, ID):
     c.execute('''DELETE FROM {} WHERE 
                 {} :=ID;
                 '''.format(TableName, FieldName[0]), {"ID": ID})
