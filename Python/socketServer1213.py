@@ -37,10 +37,10 @@ def phone(sp,num):
                 data = cursor.fetchall()
                 if lineSplit[0] == "get":
                     database.update(c = cur, ID = data[0][0],quantity = data[0][1] - 1)
-                    msg = "get/" + data[0][0]
+                    msg = "get/" + str(data[0][0])
                 elif lineSplit[0] == "store":
                     database.update(c = cur, ID = data[0][0],quantity = data[0][1] + 1)
-                    msg = "store/" + data[0][0]
+                    msg = "store/" + str(data[0][0])
 
             elif lineSplit[0] == "add":
                 reply = "OK\n"
@@ -65,6 +65,8 @@ def phone(sp,num):
         
         except socket.timeout:
             pass
+    cur.close()
+    db.close()
 
 def arm(sa,num):
     global msg
@@ -83,7 +85,7 @@ def arm(sa,num):
             elif message[0] == "store":
                 # according to message[1], arm control
                 print("arm Controlling")
-            request = sc.recv(1024)
+            request = sa.recv(1024)
             reply = "Arm say : /" + request.decode() + "/\n"
             print(reply)
         except socket.timeout:
@@ -166,8 +168,6 @@ if __name__ == "__main__":
             tdBreak[i] = False
             thread[i].join()
         s.close()
-        cur.close()
-        db.close()
         print("Server Close")
 
 
