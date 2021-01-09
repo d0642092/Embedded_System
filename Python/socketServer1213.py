@@ -37,8 +37,10 @@ def phone(sp,num):
                 data = cursor.fetchall()
                 if lineSplit[0] == "get":
                     database.update(c = cur, ID = data[0][0],quantity = data[0][1] - 1)
+                    msg = "get/" + data[0][0]
                 elif lineSplit[0] == "store":
                     database.update(c = cur, ID = data[0][0],quantity = data[0][1] + 1)
+                    msg = "store/" + data[0][0]
 
             elif lineSplit[0] == "add":
                 reply = "OK\n"
@@ -52,6 +54,7 @@ def phone(sp,num):
                         print(id)
                         break
                 database.insert(cur,id,lineSplit[1],0,lineSplit[2])
+
             elif lineSplit[0] == "del":
                 reply = "OK\n"
                 sp.sendall(reply.encode())
@@ -62,7 +65,33 @@ def phone(sp,num):
         
         except socket.timeout:
             pass
-    
+
+def arm(sa,num):
+    global msg
+    global tdBreak
+    lastTime = time.time()
+    while tdBreak[num]:
+        curTime = time.time()
+        if curTime - lastTime > 2:
+            print("arm dsconnected")
+            break
+        try:
+            message = msg.split('/')
+            if message[0] == "catch":
+                # according to message[1], arm control
+                print("arm Controlling")
+            elif message[0] == "store":
+                # according to message[1], arm control
+                print("arm Controlling")
+            request = sc.recv(1024)
+            reply = "Arm say : /" + request.decode() + "/\n"
+            print(reply)
+        except socket.timeout:
+            pass
+
+
+
+
 def car(sc,num):
     global msg
     global tdBreak
@@ -73,12 +102,14 @@ def car(sc,num):
             print("Car disconnected")
             break
         try:
-            if msg == "go":
-                sc.sendall("CarGo".encode())
-                msg = "non"
             request = sc.recv(1024)
             reply = "Car say : " + request.decode() + "/\n"
             print(reply)
+            if msg == "go":
+                sc.sendall("CarGo".encode())
+                msg = "non"
+            else:
+                sc.sendall(reply.encode())
             lastTime = time.time()
         except socket.timeout:
             pass
@@ -118,6 +149,12 @@ if __name__ == "__main__":
                     thread.append(ct) # 儲存每個thread
                     num = num + 1 # 紀錄有幾個thread
                     ct.start()
+                elif request.decode() == "arm_WiFi":
+                    con.settimeout(0.5)
+                    at = threading.Thread(target=arm, args=[con,num])
+                    tdBreak.append(True)
+                    thread.append(at)
+                    num = num + 1
                 else:
                     con.close()
                 print("thread : ", num)
